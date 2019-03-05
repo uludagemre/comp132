@@ -56,12 +56,13 @@ public class PS4_write_read {
 	public static DiseaseStatusHD getDiseaseStatus(String sequence){
 		int countOfCags = 0;
 		countOfCags=numberOfRepats(sequence, "CAG");
+
 		if (countOfCags<26) return DiseaseStatusHD.WILL_NOT_DEVELOP_HD;
 		else if (countOfCags>=27 && countOfCags<=35 ) return DiseaseStatusHD.OFFSPRING_AT_RISK;
 		else if (countOfCags>=36 && countOfCags<=39 ) return DiseaseStatusHD.AT_HD_RISK;
 		else if (countOfCags>40) return DiseaseStatusHD.WILL_DEVELOP_HD;
 		else{
-			return null;
+			return DiseaseStatusHD.WILL_NOT_DEVELOP_HD;
 		}
 	}
 	public static int numberOfRepats(String sequence, String dnaRepeat){
