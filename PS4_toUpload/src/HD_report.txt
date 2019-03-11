@@ -1,6 +1,0 @@
-Name	Surname	Number Of Repeats	Disease Status	
-Johnny	Adams	177             	WILL_DEVELOP_HD	
-Leila	Thomas	75              	WILL_DEVELOP_HD	
-Jack	Berg	23              	WILL_NOT_DEVELOP_HD	
-Daniel	Smith	38              	AT_HD_RISK	
-Stefan	Hopkins	37              	AT_HD_RISK	

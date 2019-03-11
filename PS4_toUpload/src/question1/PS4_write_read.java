@@ -19,26 +19,29 @@ public class PS4_write_read {
 
 			output.format("Name\t");
 			output.format("Surname\t");
-			output.format("Number Of Repeats\t");
+			output.format("Number Of Repeats\t\t");
 			output.format("Disease Status\t\n");
 			
 			input.nextLine();
 			
 			while(input.hasNextLine()){
 				
-				String line = input.nextLine();
 				
-				String[] splited = line.split("\\s+");
+//				String[] splited = line.split("\\s+");
+//				
+//				String name = splited[0];
+//				String surname = splited[1];
+//				String dnaSequence = splited[2];
 				
-				String name = splited[0];
-				String surname = splited[1];
-				String dnaSequence = splited[2];
+				String name = input.next();
+				String surname= input.next();
+				String dnaSequence = input.next();
 				
 				DiseaseStatusHD status = getDiseaseStatus(dnaSequence);
 				int numberOfRepeats = numberOfRepats(dnaSequence, "CAG");
 				output.format("%s\t",name);
 				output.format("%s\t",surname);
-				output.format("%-16s\t",Integer.toString(numberOfRepeats));
+				output.format("%-19s\t\t",Integer.toString(numberOfRepeats));
 				output.format("%s\t\n",status);
 			}
 
