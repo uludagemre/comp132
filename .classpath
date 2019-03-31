@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="CarAnimation/src"/>
+	<classpathentry kind="src" path="Comp132 PS7/src"/>
+	<classpathentry kind="src" path="PS3_starter/src"/>
+	<classpathentry kind="src" path="PS4_toUpload/src"/>
+	<classpathentry kind="src" path="solutions_ps5/solutions_ps5/src"/>
+	<classpathentry kind="src" path="source codes/ch08/fig08_01_02"/>
+	<classpathentry kind="src" path="source codes/ch08/fig08_03"/>
+	<classpathentry kind="src" path="source codes/ch08/fig08_04"/>
+	<classpathentry kind="src" path="source codes/ch08/fig08_05_06"/>
+	<classpathentry kind="src" path="source codes/ch08/fig08_07_09"/>
+	<classpathentry kind="src" path="source codes/ch08/fig08_10_11"/>
+	<classpathentry kind="src" path="source codes/ch08/fig08_12_13"/>
+	<classpathentry kind="src" path="source codes/ch08/fig08_14"/>
+	<classpathentry kind="src" path="source codes/ch08/fig08_15"/>
+	<classpathentry kind="src" path="source codes/ch08/fig08_16"/>
+	<classpathentry kind="src" path="source codes/ch08/GUIGraphicsCaseStudy08"/>
+	<classpathentry kind="src" path="source codes/ch09/fig09_04_05"/>
+	<classpathentry kind="src" path="source codes/ch09/fig09_06_07"/>
+	<classpathentry kind="src" path="source codes/ch09/fig09_08"/>
+	<classpathentry kind="src" path="source codes/ch09/fig09_09"/>
+	<classpathentry kind="src" path="source codes/ch09/fig09_10_11"/>
+	<classpathentry kind="src" path="source codes/ch10/Fig10_01"/>
+	<classpathentry kind="src" path="source codes/ch10/Fig10_04_09"/>
+	<classpathentry kind="src" path="source codes/ch10/Fig10_11_14"/>
+	<classpathentry kind="src" path="source codes/ch11/fig11_02"/>
+	<classpathentry kind="src" path="source codes/ch11/fig11_03"/>
+	<classpathentry kind="src" path="source codes/ch11/fig11_05"/>
+	<classpathentry kind="src" path="source codes/ch11/fig11_06"/>
+	<classpathentry kind="src" path="source codes/ch11/fig11_07"/>
+	<classpathentry kind="src" path="source codes/ch11/fig11_08"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_01"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_02"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_03"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_04"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_05"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_06"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_07"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_08"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_09"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_10"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_11"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_12"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_13"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_14"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_15"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_16"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_17"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_18"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_20_21"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_23"/>
+	<classpathentry kind="src" path="source codes/ch14/fig14_24"/>
+	<classpathentry kind="src" path="source codes/ch15/fig15_02"/>
+	<classpathentry kind="src" path="source codes/ch15/fig15_14-15"/>
+	<classpathentry kind="src" path="source codes/ch15/RecursivelyShowPath"/>
+	<classpathentry kind="src" path="source codes/ch15/SerializationApps"/>
+	<classpathentry kind="src" path="source codes/ch15/TextFileApps"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_02"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_03"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_04"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_06"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_07"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_08_09"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_10"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_11"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_12"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_13"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_14"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_15"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_16"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_17"/>
+	<classpathentry kind="src" path="source codes/ch16/fig16_20"/>
+	<classpathentry kind="src" path="source codes/ch17/exercises"/>
+	<classpathentry kind="src" path="source codes/ch17/fig17_03"/>
+	<classpathentry kind="src" path="source codes/ch17/fig17_04"/>
+	<classpathentry excluding="ModifiedToDisplayIntermediateOps/" kind="src" path="source codes/ch17/fig17_07"/>
+	<classpathentry kind="src" path="source codes/ch17/fig17_07/ModifiedToDisplayIntermediateOps"/>
+	<classpathentry kind="src" path="source codes/ch17/fig17_08"/>
+	<classpathentry kind="src" path="source codes/ch17/fig17_09"/>
+	<classpathentry kind="src" path="source codes/ch17/fig17_11"/>
+	<classpathentry kind="src" path="source codes/ch17/fig17_12"/>
+	<classpathentry kind="src" path="source codes/ch17/fig17_13-21"/>
+	<classpathentry kind="src" path="source codes/ch17/fig17_22"/>
+	<classpathentry kind="src" path="source codes/ch17/fig17_24"/>
+	<classpathentry kind="src" path="source codes/ch17/fig26_21_22_lambda"/>
+	<classpathentry kind="src" path="source codes/ch17/TipCalculator"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_02"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_06_07"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_09_10"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_15_16"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_17_18"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_19_20"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_21_22"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_23_24"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_25_26"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_28_29"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_31_32"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_34_35"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_36_37"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_39_40"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_41_42"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_43_44"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_45_46"/>
+	<classpathentry kind="src" path="source codes/ch26Swing/fig26_47_48"/>
+	<classpathentry kind="src" path="source codes/PolyVehiclesExample/src"/>
+	<classpathentry kind="src" path="SS2/src"/>
+	<classpathentry kind="src" path="SS3/SS3_part1/src"/>
+	<classpathentry kind="src" path="SS3/SS3_part2/src"/>
+	<classpathentry kind="src" path="SS4/SS4_sol/src"/>
+	<classpathentry kind="output" path="CarAnimation/bin"/>
+</classpath>

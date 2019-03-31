@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="fig26_02"/>
+	<classpathentry kind="src" path="fig26_06_07"/>
+	<classpathentry kind="src" path="fig26_09_10"/>
+	<classpathentry kind="src" path="fig26_15_16"/>
+	<classpathentry kind="src" path="fig26_17_18"/>
+	<classpathentry kind="src" path="fig26_19_20"/>
+	<classpathentry kind="src" path="fig26_21_22"/>
+	<classpathentry kind="src" path="fig26_23_24"/>
+	<classpathentry kind="src" path="fig26_25_26"/>
+	<classpathentry kind="src" path="fig26_28_29"/>
+	<classpathentry kind="src" path="fig26_31_32"/>
+	<classpathentry kind="src" path="fig26_34_35"/>
+	<classpathentry kind="src" path="fig26_36_37"/>
+	<classpathentry kind="src" path="fig26_39_40"/>
+	<classpathentry kind="src" path="fig26_41_42"/>
+	<classpathentry kind="src" path="fig26_43_44"/>
+	<classpathentry kind="src" path="fig26_45_46"/>
+	<classpathentry kind="src" path="fig26_47_48"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

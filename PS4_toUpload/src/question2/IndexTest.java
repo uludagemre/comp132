@@ -15,10 +15,10 @@ public class IndexTest {
 
       // display index of first occurrence
       System.out.printf("\nFirst '%s' occurs at index %d\n", 
-         searchKey, FindIndex.indexOf(input, searchKey));
+         searchKey, FindIndexEmre.indexOf(input, searchKey));
    
       // display index of last occurrence
       System.out.printf("Last '%s' occurs at index %d\n", 
-         searchKey, FindIndex.lastIndexOf(input, searchKey));
+         searchKey, FindIndexEmre.lastIndexOf(input, searchKey));
    } 
 }
