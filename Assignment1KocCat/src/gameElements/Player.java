@@ -9,18 +9,33 @@ import javax.swing.ImageIcon;
 
 import gui.GameBoard;
 
-public class Player extends Item {
-
+public class Player {
+	private boolean isFruitMatched ;
 	private String name;
 	private String surName;
 	private int score;
+	private GameBoard board;
+	private int x;
+	private int y;
+	private String iconPath;
+	private boolean isAlive;
 
 	public Player(int x, int y, boolean alive, String iconPath, String name, String surName,
 			int score) {
-		super(x, y, alive, iconPath,null);
+		setX(x);
+		setY(y);
 		this.name = name;
 		this.surName = surName;
 		this.score = score;
+		setAlive(alive);
+		setIconPath(iconPath);
+		System.out.println("I am here");
+	}
+	public String getIconPath() {
+		return iconPath;
+	}
+	public void setIconPath(String iconPath) {
+		this.iconPath = iconPath;
 	}
 	public void setScore(int score) {
 		this.score = score;
@@ -43,52 +58,76 @@ public class Player extends Item {
 
 	public void move(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-			try {
-				setIconPath("/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_left.png");
-
-			} catch (FileNotFoundException exception) {
-				System.out.println("No image path found");
-			}
+			setIconPath("/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_left.png");
 			if(getX()>210) {
 				goLeft();
 			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-			try {
-				setIconPath("/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_down.png");
-
-			} catch (FileNotFoundException exception) {
-				System.out.println("No image path found");
-			}
+			setIconPath("/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_down.png");
 			if(getY()<500) {
 				goDown();
 			}
 		}	
 		if(e.getKeyCode() == KeyEvent.VK_UP) {
-			try {
-				setIconPath("/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_up.png");
-
-			} catch (FileNotFoundException exception) {
-				System.out.println("No image path found");
-			}
+			setIconPath("/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_up.png");
 			if(getY()>0) {
 				goUp();
 
 			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			try {
-				setIconPath("/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_right.png");
-
-			} catch (FileNotFoundException exception) {
-				System.out.println("No image path found");
-			}
+			setIconPath("/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_right.png");
 			if(getX()<700) {
 				goRight();
 			}
-			
+			//			isFruitMatched = (super.getBoard().getPlayer().getX() == super.getX() ) && (super.getBoard().getPlayer().getY() == super.getY());
+			//			if(isFruitMatched) {
+			//				super.getBoard().congratsPlayer();
+			//			}
+
 		}
 	}
+	public void setBoard(GameBoard board) {
+		this.board = board;
+	}
+	public int getX() {
+		return x;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+	public int getY() {
+		return y;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
+	public boolean isAlive() {
+		return isAlive;
+	}
+	public void setAlive(boolean alive) {
+		this.isAlive = alive;
+	}
+	public void goUp() {
+		setY(getY()-board.step);
+	}
+	public void goDown() {
+		setY(getY()+board.step);
+	}
+	public void goRight() {
+		setX(getX()+board.step);
+	}
+	public void goLeft() {
+		setX(getX()-board.step);
+	}
+	public void drawItem(Graphics g) {
+
+		ImageIcon image = new ImageIcon(getIconPath());
+		g.drawImage(image.getImage(), getX(), getY(), null);	
+	}
+
 }
+
 
 

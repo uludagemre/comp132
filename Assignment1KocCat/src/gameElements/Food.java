@@ -10,9 +10,11 @@ import gui.GameBoard;
 public class Food extends Item implements Runnable {
 
 	private int age;
-
-	public Food(int x, int y, boolean alive, String iconPath, int age, GameBoard board) {
+	private int number;
+	
+	public Food(int x, int y, boolean alive, String iconPath, int age, GameBoard board,int number) {
 		super(x, y, alive, iconPath,board);
+		this.number=number;
 		this.age = age;
 	}
 
@@ -24,7 +26,7 @@ public class Food extends Item implements Runnable {
 	public void checkConsumed() {
 		if((getBoard().getPlayer().getX() == super.getX())&&(getBoard().getPlayer().getY() == super.getY())) {
 			super.setShouldDrawn(false);
-//			System.out.println("Checked");
+
 			super.getBoard().repaint();
 		}
 	}
@@ -39,16 +41,12 @@ public class Food extends Item implements Runnable {
 	}
 
 	public void run() {
-		int count = 0;
 		while(true) {
 			try {
 				Thread.sleep(100);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null,"The thread is interrupted!");
 			}
-//			checkConsumed();
-//			count++;
-//			if(count%10==0) grow();
 		}
 	}
 }

@@ -7,20 +7,31 @@ import gui.GameBoard;
 public class Game {
 
 	private int numberOfGhost;
-	private int numberOfFoods;
+	private int numberOfPoisons;
+	private int numberOfFruits;
 	private GameBoard board;
-	private ArrayList<Item> items;
 	private Player player;
 	
-	public Game (int ghost, int food,Player player) {
-		setNumberOfFoods(food);
+	public Game (int ghost, int fruits,int poisons,Player player) {
+		setNumberOfPoisons(poisons);
+		setNumberOfFruits(fruits);
 		setNumberOfGhost(ghost);
 		setPlayer(player);
-		for (int i = 0; i < numberOfFoods + numberOfGhost; i++) {
-			//items.add();
-		}
+		
 		
 	}	
+	public int getNumberOfPoisons() {
+		return numberOfPoisons;
+	}
+	public void setNumberOfPoisons(int numberOfPoisons) {
+		this.numberOfPoisons = numberOfPoisons;
+	}
+	public int getNumberOfFruits() {
+		return numberOfFruits;
+	}
+	public void setNumberOfFruits(int numberOfFruits) {
+		this.numberOfFruits = numberOfFruits;
+	}
 	public Player getPlayer() {
 		return player;
 	}
@@ -41,18 +52,8 @@ public class Game {
 	public void setNumberOfGhost(int numberOfGhost) {
 		this.numberOfGhost = numberOfGhost;
 	}
-	public int getNumberOfFoods() {
-		return numberOfFoods;
-	}
-	public void setNumberOfFoods(int numberOfFoods) {
-		this.numberOfFoods = numberOfFoods;
-	}
-	public void addItem(Item i) {
-		items.add(i);
-	}
-	public boolean removeItem(Item i) {
-		return items.remove(i);
-	}
+	
+	
 	
 	
 }

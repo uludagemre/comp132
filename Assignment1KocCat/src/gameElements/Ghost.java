@@ -7,17 +7,19 @@ import javax.swing.JOptionPane;
 import gui.GameBoard;
 
 public class Ghost extends Item implements Runnable {
+	private int number;
 	private boolean isMatched ;
 	Random rand = new Random();
-	public Ghost(int x, int y, boolean alive, String iconPath, GameBoard board) {
+	public Ghost(int x, int y, boolean alive, String iconPath, GameBoard board,int number) {
 		super(x, y, alive, iconPath, board);
+		this.number = number;
 	}
 	
 	@Override
 	public void run() {
 		while(true) {
 			try {
-				Thread.sleep(400);
+				Thread.sleep(500);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null,"The thread is interrupted!");
 			}

@@ -2,16 +2,18 @@ package gameElements;
 
 import java.awt.Graphics;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 import gui.GameBoard;
 
 public class Item implements Drawable {
 	
-	private int x;
-	private int y;
+//	private int x;
+//	private int y;
+	private ArrayList<Coordinate> items;
 	private boolean alive;
 	private String iconPath;
 	private GameBoard board;
@@ -23,10 +25,9 @@ public class Item implements Drawable {
 	}
 
 
-	public Item(int x, int y, boolean alive, String iconPath ,GameBoard board) {
+	public Item(ArrayList<Coordinate> coordinates, boolean alive, String iconPath ,GameBoard board) {
 		
-		this.x = x;
-		this.y = y;
+		this.items = items;
 		this.alive = alive;
 		this.iconPath = iconPath;
 		this.board = board;
@@ -53,18 +54,19 @@ public class Item implements Drawable {
 	public void setBoard(GameBoard board) {
 		this.board = board;
 	}
-	public int getX() {
-		return x;
+	
+	public ArrayList<Coordinate> getItems() {
+		return items;
 	}
-	public void setX(int x) {
-		this.x = x;
+	
+	public void setItems(ArrayList<Coordinate> items) {
+		Coordinate it = (Coordinate) items.iterator();
+		while(((Iterator<Coordinate>) it).hasNext()) {
+			this.items.add(it);
+		}
 	}
-	public int getY() {
-		return y;
-	}
-	public void setY(int y) {
-		this.y = y;
-	}
+	
+	
 	public boolean isAlive() {
 		return alive;
 	}
