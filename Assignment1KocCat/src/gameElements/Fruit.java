@@ -12,7 +12,7 @@ public class Fruit extends Food {
 
 		// TODO Auto-generated constructor stub
 	public Fruit(int x, int y, boolean alive, String iconPath, int age, GameBoard board,int number) {
-		super(x, y, alive, iconPath, age,board,number);
+		super(x, y, alive, iconPath, age,board);
 		// TODO Auto-generated constructor stub
 	}
 

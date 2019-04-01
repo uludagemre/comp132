@@ -10,8 +10,8 @@ import gui.GameBoard;
 
 public class Poison extends Food{
 
-	public Poison(int x, int y, boolean alive, String iconPath, int age, GameBoard board,int number) {
-		super(x, y, alive, iconPath, age,board,number);
+	public Poison(int x, int y, boolean alive, String iconPath, int age, GameBoard board) {
+		super(x, y, alive, iconPath, age,board);
 	}
 
 	@Override

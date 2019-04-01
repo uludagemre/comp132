@@ -11,13 +11,12 @@ import gui.GameBoard;
 
 public class Item implements Drawable {
 	
-//	private int x;
-//	private int y;
-	private ArrayList<Coordinate> items;
+	private int x;
+	private int y;
 	private boolean alive;
 	private String iconPath;
 	private GameBoard board;
-	private boolean shouldDrawn =true; 
+	private boolean shouldDrawn=true; 
 	
 	
 	public void setShouldDrawn(boolean shouldDrawn) {
@@ -25,9 +24,10 @@ public class Item implements Drawable {
 	}
 
 
-	public Item(ArrayList<Coordinate> coordinates, boolean alive, String iconPath ,GameBoard board) {
+	public Item(int x, int y, boolean alive, String iconPath ,GameBoard board) {
 		
-		this.items = items;
+		this.x =x;
+		this.y =y;
 		this.alive = alive;
 		this.iconPath = iconPath;
 		this.board = board;
@@ -55,16 +55,6 @@ public class Item implements Drawable {
 		this.board = board;
 	}
 	
-	public ArrayList<Coordinate> getItems() {
-		return items;
-	}
-	
-	public void setItems(ArrayList<Coordinate> items) {
-		Coordinate it = (Coordinate) items.iterator();
-		while(((Iterator<Coordinate>) it).hasNext()) {
-			this.items.add(it);
-		}
-	}
 	
 	
 	public boolean isAlive() {
@@ -73,6 +63,26 @@ public class Item implements Drawable {
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
+	public int getX() {
+		return x;
+	}
+
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+
+	public int getY() {
+		return y;
+	}
+
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+
 	public void goUp() {
 		setY(getY()-board.step);
 	}

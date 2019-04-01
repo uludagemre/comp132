@@ -12,8 +12,8 @@ public class Food extends Item implements Runnable {
 	private int age;
 	private int number;
 	
-	public Food(int x, int y, boolean alive, String iconPath, int age, GameBoard board,int number) {
-		super(x, y, alive, iconPath,board);
+	public Food(int x, int y, boolean alive, String iconPath, int age, GameBoard board) {
+		super(x, y, alive, iconPath, board);
 		this.number=number;
 		this.age = age;
 	}
