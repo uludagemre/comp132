@@ -74,16 +74,16 @@ public abstract class Item implements Drawable {
 	}
 
 	public void goUp() {
-		setY(getY()-board.step);
+		setY(getY()-board.step/3);
 	}
 	public void goDown() {
-		setY(getY()+board.step);
+		setY(getY()+board.step/3);
 	}
 	public void goRight() {
-		setX(getX()+board.step);
+		setX(getX()+board.step/3);
 	}
 	public void goLeft() {
-		setX(getX()-board.step);
+		setX(getX()-board.step/3);
 	}
 	public void draw(Graphics g) {
 

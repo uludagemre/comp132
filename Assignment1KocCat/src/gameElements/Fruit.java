@@ -48,6 +48,7 @@ public class Fruit extends Food implements Drawable,Runnable{
 			int score = getBoard().getPlayer().getScore();
 			score+=5*getAge();
 			getBoard().getPlayer().setScore(score);
+			getBoard().decreaseFruitUntilWon();
 		}
 		
 	}

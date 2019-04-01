@@ -13,13 +13,13 @@ enum GhostType {
 	Capser,Dolly,Ash	
 }
 
-
 public class Ghost extends Item implements Runnable {
 	private GhostType type;
 	private boolean isMatched ;
 	Direction currentDirectionAsh= Direction.Left;
 	Direction currentDirectionDolly= Direction.Down;
 	Random rand = new Random();
+	int randInt = rand.nextInt(4);
 	public Ghost(int x, int y, boolean alive, String iconPath, GameBoard board) {
 		super(x, y, alive, iconPath, board);
 		if(iconPath.endsWith("ghost1.png")) type =GhostType.Ash;
@@ -31,13 +31,16 @@ public class Ghost extends Item implements Runnable {
 		long time = 0;
 		while(true) {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(10);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null,"The thread is interrupted!");
 			}
-			time += 100;
-			if(time%300 == 0) {				
+			time += 10;
+			if(time%50 == 0) {				
 				doAction();
+			}
+			if(time%300 == 0) {
+				this.randInt = rand.nextInt(4);
 			}
 			super.getBoard().repaint();
 			isMatched = (super.getBoard().getPlayer().getX() == super.getX() ) && (super.getBoard().getPlayer().getY() == super.getY());
@@ -49,16 +52,16 @@ public class Ghost extends Item implements Runnable {
 	}
 
 	public void holdInBorders() {
-		if(getY()>=550) {
+		if(getY()>540) {
 			goUp();
 		}
-		if(getY()<=0) {
+		if(getY()<-10) {
 			goDown();
 		}
-		if(getX()>=800) {
+		if(getX()>750) {
 			goLeft();
 		}
-		if(getX()<=155) {
+		if(getX()<210) {
 			goRight();
 		}
 	}
@@ -73,8 +76,7 @@ public class Ghost extends Item implements Runnable {
 		}
 	}
 	public void goRandom() {
-		int choose = rand.nextInt(4);	
-		switch (choose) {
+		switch (randInt) {
 		case 0:
 			goDown();
 			break;
@@ -91,9 +93,9 @@ public class Ghost extends Item implements Runnable {
 		holdInBorders();
 	}
 	public void goHorizontal() {
-		if(getX()<=210) {
+		if(getX()<210) {
 			currentDirectionAsh=Direction.Right;
-		}else if(getX()>710) {
+		}else if(getX()>740) {
 			currentDirectionAsh=Direction.Left;
 		}
 		if(currentDirectionAsh.equals(Direction.Right))goRight();
@@ -103,7 +105,7 @@ public class Ghost extends Item implements Runnable {
 	public void goVertical() {
 		if(getY()<=0) {
 			currentDirectionDolly=Direction.Down;
-		}else if(getY()>500) {
+		}else if(getY()>540) {
 			currentDirectionDolly=Direction.Up;
 		}
 		if(currentDirectionDolly.equals(Direction.Up))goUp();

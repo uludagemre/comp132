@@ -43,12 +43,14 @@ public class GameBoard extends JPanel implements KeyListener{
 
 	private int baseheight = 625;
 	private int basewidth = 1000;
+	private int fruitUntilWon;
 	private ImageIcon backgroundKocImage = new ImageIcon("/Users/euludag14/Desktop/comp132/Assignment1KocCat/kocUni.png");
 
 	public GameBoard(Game game) {
 
 		this.game = game;
 		this.player=game.getPlayer();
+		this.fruitUntilWon = game.getNumberOfFruits();
 		player.setBoard(this);
 
 		this.setFocusable(true);
@@ -86,6 +88,12 @@ public class GameBoard extends JPanel implements KeyListener{
 			poisons[i].draw(g);	
 		}
 	}
+	public int getFruitUntilWon() {
+		return fruitUntilWon;
+	}	
+	public void decreaseFruitUntilWon() {
+		this.fruitUntilWon = fruitUntilWon-1;
+	}
 	public Player getPlayer() {
 		return player;
 	}
@@ -103,7 +111,11 @@ public class GameBoard extends JPanel implements KeyListener{
 
 
 	public void endGame() {
-		JOptionPane.showMessageDialog(null, "Game over, Score: "+((player.getScore() < 0) ? 0 : player.getScore()));
+		if(getFruitUntilWon() == 0) {
+			JOptionPane.showMessageDialog(null, "You won, Score: "+ player.getScore());
+		}else {
+			JOptionPane.showMessageDialog(null, "Game over, Score: "+((player.getScore() < 0) ? 0 : player.getScore()));
+		}
 		System.exit(0);
 	}
 

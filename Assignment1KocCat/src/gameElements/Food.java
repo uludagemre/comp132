@@ -33,15 +33,15 @@ public abstract class Food extends Item implements Runnable{
 		long time = 0;
 		while(true) {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(10);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null,"The thread is interrupted!");
 			}
-			time +=100;
+			time +=10;
 			if(time%10000 == 0) grow();
 			doAction(); //Checks if it should be consumed
 			super.getBoard().repaint();
-			if(super.getBoard().getPlayer().getScore()<0) super.getBoard().endGame();
+			if(super.getBoard().getPlayer().getScore()<0 || (super.getBoard().getFruitUntilWon() == 0)) super.getBoard().endGame();
 		}
 	}
 	
