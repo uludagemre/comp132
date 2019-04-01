@@ -85,14 +85,14 @@ public class Player {
 			//			if(isFruitMatched) {
 			//				super.getBoard().congratsPlayer();
 			//			}
-
 		}
+		System.out.println("This is coordinates: "+getX()+" "+getY());
 	}
 	public void setBoard(GameBoard board) {
 		this.board = board;
 	}
 	public int getX() {
-		return x;
+		return x; 
 	}
 	public void setX(int x) {
 		this.x = x;

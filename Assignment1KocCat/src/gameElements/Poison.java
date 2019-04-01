@@ -8,18 +8,24 @@ import java.awt.Shape;
 
 import gui.GameBoard;
 
-public class Poison extends Food{
+public class Poison extends Food implements Drawable,Runnable{
+
+
 
 	public Poison(int x, int y, boolean alive, String iconPath, int age, GameBoard board) {
 		super(x, y, alive, iconPath, age,board);
 	}
 
 	@Override
-	public void drawItem(Graphics g) {
-		Graphics2D g2 = (Graphics2D) g;
-		Shape rect = new Rectangle(getX(), getY(), 60, 60);
-		g2.draw(rect);
-		g2.setPaint(Color.yellow);
+	public void draw(Graphics g) {
+		if(super.isAlive()) {
+			Graphics2D g2d = (Graphics2D) g;
+			g2d.setColor(Color.yellow);
+			g2d.fillRect(getX(),getY(),30,30);
+		}
 	}
-	
+
+
+
+
 }

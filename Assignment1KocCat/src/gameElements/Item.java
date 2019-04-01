@@ -16,12 +16,12 @@ public class Item implements Drawable {
 	private boolean alive;
 	private String iconPath;
 	private GameBoard board;
-	private boolean shouldDrawn=true; 
+//	private boolean shouldDrawn=true; 
 	
 	
-	public void setShouldDrawn(boolean shouldDrawn) {
-		this.shouldDrawn = shouldDrawn;
-	}
+//	public void setShouldDrawn(boolean shouldDrawn) {
+//		this.shouldDrawn = shouldDrawn;
+//	}
 
 
 	public Item(int x, int y, boolean alive, String iconPath ,GameBoard board) {
@@ -63,6 +63,8 @@ public class Item implements Drawable {
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
+	
+	
 	public int getX() {
 		return x;
 	}
@@ -95,11 +97,11 @@ public class Item implements Drawable {
 	public void goLeft() {
 		setX(getX()-board.step);
 	}
-	public void drawItem(Graphics g) {
-		if(shouldDrawn) {
+	public void draw(Graphics g) {
+//		if(shouldDrawn) {
 			ImageIcon image = new ImageIcon(getIconPath());
 			g.drawImage(image.getImage(), getX(), getY(), null);	
-		}
+//		}
 		
 	}
 	

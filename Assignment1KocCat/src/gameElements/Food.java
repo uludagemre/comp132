@@ -7,14 +7,14 @@ import javax.swing.JOptionPane;
 
 import gui.GameBoard;
 
-public class Food extends Item implements Runnable {
+public class Food extends Item implements Runnable{
 
 	private int age;
-	private int number;
+
 	
 	public Food(int x, int y, boolean alive, String iconPath, int age, GameBoard board) {
 		super(x, y, alive, iconPath, board);
-		this.number=number;
+
 		this.age = age;
 	}
 
@@ -25,9 +25,9 @@ public class Food extends Item implements Runnable {
 
 	public void checkConsumed() {
 		if((getBoard().getPlayer().getX() == super.getX())&&(getBoard().getPlayer().getY() == super.getY())) {
-			super.setShouldDrawn(false);
-
-			super.getBoard().repaint();
+//			super.setShouldDrawn(false);
+			super.setAlive(false);
+			
 		}
 	}
 
@@ -41,12 +41,17 @@ public class Food extends Item implements Runnable {
 	}
 
 	public void run() {
+		long time = 0;
 		while(true) {
 			try {
 				Thread.sleep(100);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null,"The thread is interrupted!");
 			}
+			time +=100;
+			if(time%1000 == 0) grow();
+			checkConsumed();
+			super.getBoard().repaint();
 		}
 	}
 }

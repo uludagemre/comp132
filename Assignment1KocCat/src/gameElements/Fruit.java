@@ -3,30 +3,29 @@ package gameElements;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.Shape;
+import java.awt.geom.Ellipse2D;
 
 import gui.GameBoard;
 
-public class Fruit extends Food {
+public class Fruit extends Food implements Drawable,Runnable{
 
-		// TODO Auto-generated constructor stub
-	public Fruit(int x, int y, boolean alive, String iconPath, int age, GameBoard board,int number) {
+	int radius = 30;
+
+	// TODO Auto-generated constructor stub
+	public Fruit(int x, int y, boolean alive, String iconPath, int age, GameBoard board) {
 		super(x, y, alive, iconPath, age,board);
 		// TODO Auto-generated constructor stub
+		System.out.println("This is x :"+getX()+" y: "+getY());
 	}
 
-	public void drawItem(Graphics g) {
-		Graphics2D g2 = (Graphics2D) g;
-		Shape recht = new Rectangle(getX(), getY(), 50, 50);
-		Color color = Color.blue;
-		g2.setColor(color);
-		g2.fill(recht);
+	public void draw(Graphics g) {
 		
 		
-		
-		//		g2.drawRect(getX(), getY(), 40, 40);
-//		g2.fillRect(getY(), getY(), 40, 40);;
-//		g2.setPaint(Color.blue);
+		if(super.isAlive()) {
+		Graphics2D g2d = (Graphics2D) g;
+	      g2d.setColor(Color.blue);
+	      g2d.fillOval(getX(),getY(),30,30);
+		}
+
 	}
 }
