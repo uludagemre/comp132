@@ -104,5 +104,8 @@ public class Item implements Drawable {
 //		}
 		
 	}
+	public void consume() {
+		setAlive(false);
+	}
 	
 }

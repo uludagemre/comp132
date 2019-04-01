@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 import gui.GameBoard;
 
-public class Food extends Item implements Runnable{
+public abstract class Food extends Item implements Runnable{
 
 	private int age;
 
@@ -23,13 +23,7 @@ public class Food extends Item implements Runnable{
 	}
 
 
-	public void checkConsumed() {
-		if((getBoard().getPlayer().getX() == super.getX())&&(getBoard().getPlayer().getY() == super.getY())) {
-//			super.setShouldDrawn(false);
-			super.setAlive(false);
-			
-		}
-	}
+	public abstract void checkShouldConsumed() ;
 
 	public int getAge() {
 		return age;
@@ -49,9 +43,11 @@ public class Food extends Item implements Runnable{
 				JOptionPane.showMessageDialog(null,"The thread is interrupted!");
 			}
 			time +=100;
-			if(time%1000 == 0) grow();
-			checkConsumed();
+			if(time%10000 == 0) grow();
+			checkShouldConsumed();
 			super.getBoard().repaint();
 		}
 	}
+	
+	
 }

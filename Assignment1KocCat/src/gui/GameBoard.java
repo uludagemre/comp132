@@ -139,7 +139,7 @@ public class GameBoard extends JPanel implements KeyListener{
 	public void createFruits(Fruit[] fruits,Thread[] threads ) {
 
 		for (int i = 0; i < fruits.length; i++) {
-			fruits[i] = new Fruit(GameBoard.baseX+rand.nextInt(9)*step,GameBoard.baseY+rand.nextInt(9)*step,true,null,i, this);
+			fruits[i] = new Fruit(GameBoard.baseX+rand.nextInt(9)*step,GameBoard.baseY+rand.nextInt(9)*step,true,null,1, this);
 			threads[i] = new Thread(fruits[i]);
 			threads[i].start();
 		}
@@ -147,7 +147,7 @@ public class GameBoard extends JPanel implements KeyListener{
 	public void createPoisons(Poison[] poisons,Thread[] threads ) {
 
 		for (int i = 0; i < fruits.length; i++) {
-			poisons[i] = new Poison(GameBoard.baseX+rand.nextInt(9)*step,GameBoard.baseY+rand.nextInt(9)*step,true,null,i, this);
+			poisons[i] = new Poison(GameBoard.baseX+rand.nextInt(9)*step,GameBoard.baseY+rand.nextInt(9)*step,true,null,1, this);
 			threads[i] = new Thread(poisons[i]);
 			threads[i].start();
 		}
@@ -158,11 +158,3 @@ public class GameBoard extends JPanel implements KeyListener{
 
 
 
-
-
-
-//public void drawItem(Graphics g) {
-//
-//	ImageIcon image = new ImageIcon("/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_right.png");
-//	g.drawImage(image.getImage(), 210, 0, null);
-//}

@@ -81,12 +81,10 @@ public class Player {
 			if(getX()<700) {
 				goRight();
 			}
-			//			isFruitMatched = (super.getBoard().getPlayer().getX() == super.getX() ) && (super.getBoard().getPlayer().getY() == super.getY());
-			//			if(isFruitMatched) {
-			//				super.getBoard().congratsPlayer();
-			//			}
+			
 		}
-		System.out.println("This is coordinates: "+getX()+" "+getY());
+		System.out.println("This is your score: "+getScore());
+
 	}
 	public void setBoard(GameBoard board) {
 		this.board = board;
