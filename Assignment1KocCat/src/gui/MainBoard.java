@@ -38,7 +38,7 @@ public class MainBoard extends JFrame{
 		JLabel welcomeLabel= new JLabel("Welcome to Koc Cat Game");
 		JLabel clickLabel= new JLabel("Click to Start");
 		JLabel catimage = new JLabel();
-		catimage.setIcon(new ImageIcon("/Users/euludag14/Desktop/comp132/Assignment1KocCat/logo.png"));
+		catimage.setIcon(new ImageIcon("logo.png"));
 		catimage.setBounds(width/2-75,200,160,160);
 
 		welcomeLabel.setBounds(width/2-150,100,300,40);

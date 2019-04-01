@@ -52,7 +52,7 @@ public class App {
 			if(mustExit)System.exit(0);
 		}
 		
-		Player player = new Player(GameBoard.baseX,GameBoard.baseY,true,"/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_right.png",first_name,second_name,0);
+		Player player = new Player(GameBoard.baseX,GameBoard.baseY,true,"image_right.png",first_name,second_name,0);
 		Game game = new Game(number_ghost,number_fruits,number_poisons,player);
 		showGameBoard(game,first_name,second_name);	
 	}

@@ -22,9 +22,9 @@ public class GameBoard extends JPanel implements KeyListener{
 	public static final int baseY= 0;
 	public static final int step = 60;
 
-	private String ghost1Path =  "/Users/euludag14/Desktop/comp132/Assignment1KocCat/ghost1.png";
-	private String ghost2Path =  "/Users/euludag14/Desktop/comp132/Assignment1KocCat/ghost2.png";
-	private String ghost3Path =  "/Users/euludag14/Desktop/comp132/Assignment1KocCat/ghost3.png";
+	private String ghost1Path =  "ghost1.png";
+	private String ghost2Path =  "ghost2.png";
+	private String ghost3Path =  "ghost3.png";
 
 	private JFrame gameBoard = new JFrame("Koc Cat");
 	private Game game;
@@ -44,7 +44,7 @@ public class GameBoard extends JPanel implements KeyListener{
 	private int baseheight = 625;
 	private int basewidth = 1000;
 	private int fruitUntilWon;
-	private ImageIcon backgroundKocImage = new ImageIcon("/Users/euludag14/Desktop/comp132/Assignment1KocCat/kocUni.png");
+	private ImageIcon backgroundKocImage = new ImageIcon("kocUni.png");
 
 	public GameBoard(Game game) {
 
