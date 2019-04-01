@@ -36,12 +36,12 @@ public class Fruit extends Food implements Drawable,Runnable{
 				g2d.fillOval(getX(),getY(),30,30);
 				setAge(1);
 			}
-
+ 
 		}
 	}
 
 	@Override
-	public void checkShouldConsumed() {
+	public void doAction() {
 		boolean matched =(getBoard().getPlayer().getX() == super.getX())&&(getBoard().getPlayer().getY() == super.getY());
 		if(matched) {
 			consume();

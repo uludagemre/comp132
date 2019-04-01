@@ -11,6 +11,7 @@ public class App {
 
 	public static void main(String[] args) {
 
+		boolean mustExit = false;
 		MainBoard main= new MainBoard("Koç Cat Game");   
 		String first_name = JOptionPane.showInputDialog("Enter First Name");
 		String second_name = JOptionPane.showInputDialog("Enter Second Name");
@@ -23,21 +24,30 @@ public class App {
 			if(number_ghost <= 0) throw new IllegalArgumentException();
 		}catch (IllegalArgumentException e) {
 			JOptionPane.showMessageDialog(null,"You entered an unaccepted argument");
+			mustExit =true;
 			return;
+		}finally {
+			if(mustExit)System.exit(0);
 		}
 		try{
 			number_fruits =Integer.parseInt(JOptionPane.showInputDialog("Enter number of Fruits"));
 			if(number_fruits <= 0) throw new IllegalArgumentException();
 		}catch (IllegalArgumentException e) {
 			JOptionPane.showMessageDialog(null,"You entered an unaccepted argument");
+			mustExit =true;
 			return;
+		}finally {
+			if(mustExit)System.exit(0);
 		}
 		try{
 			number_poisons =Integer.parseInt(JOptionPane.showInputDialog("Enter number of Poisons"));
 			if(number_poisons <= 0) throw new IllegalArgumentException();
 		}catch (IllegalArgumentException e) {
 			JOptionPane.showMessageDialog(null,"You entered an unaccepted argument");
+			mustExit =true;
 			return;
+		}finally {
+			if(mustExit)System.exit(0);
 		}
 		
 		Player player = new Player(GameBoard.baseX,GameBoard.baseY,true,"/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_right.png",first_name,second_name,0);

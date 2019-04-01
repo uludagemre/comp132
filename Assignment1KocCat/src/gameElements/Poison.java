@@ -10,8 +10,6 @@ import gui.GameBoard;
 
 public class Poison extends Food implements Drawable,Runnable{
 
-
-
 	public Poison(int x, int y, boolean alive, String iconPath, int age, GameBoard board) {
 		super(x, y, alive, iconPath, age,board);
 	}
@@ -34,7 +32,7 @@ public class Poison extends Food implements Drawable,Runnable{
 	}
 
 	@Override
-	public void checkShouldConsumed() {
+	public void doAction() {
 		boolean matched =(getBoard().getPlayer().getX() == super.getX())&&(getBoard().getPlayer().getY() == super.getY());
 		if(matched) {
 			consume();
@@ -44,7 +42,6 @@ public class Poison extends Food implements Drawable,Runnable{
 		}
 		
 	}
-
 
 
 }

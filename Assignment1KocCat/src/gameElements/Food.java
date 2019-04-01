@@ -22,18 +22,13 @@ public abstract class Food extends Item implements Runnable{
 		setAge(getAge()+1);
 	}
 
-
-	public abstract void checkShouldConsumed() ;
-
 	public int getAge() {
 		return age;
 	}
 
-
 	public void setAge(int age) {
 		this.age = age;
 	}
-
 	public void run() {
 		long time = 0;
 		while(true) {
@@ -44,8 +39,9 @@ public abstract class Food extends Item implements Runnable{
 			}
 			time +=100;
 			if(time%10000 == 0) grow();
-			checkShouldConsumed();
+			doAction(); //Checks if it should be consumed
 			super.getBoard().repaint();
+			if(super.getBoard().getPlayer().getScore()<0) super.getBoard().endGame();
 		}
 	}
 	

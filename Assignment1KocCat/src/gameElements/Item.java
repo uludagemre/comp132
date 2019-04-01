@@ -9,20 +9,13 @@ import javax.swing.ImageIcon;
 
 import gui.GameBoard;
 
-public class Item implements Drawable {
+public abstract class Item implements Drawable {
 	
 	private int x;
 	private int y;
 	private boolean alive;
 	private String iconPath;
 	private GameBoard board;
-//	private boolean shouldDrawn=true; 
-	
-	
-//	public void setShouldDrawn(boolean shouldDrawn) {
-//		this.shouldDrawn = shouldDrawn;
-//	}
-
 
 	public Item(int x, int y, boolean alive, String iconPath ,GameBoard board) {
 		
@@ -63,27 +56,22 @@ public class Item implements Drawable {
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
-	
-	
+		
 	public int getX() {
 		return x;
 	}
-
 
 	public void setX(int x) {
 		this.x = x;
 	}
 
-
 	public int getY() {
 		return y;
 	}
 
-
 	public void setY(int y) {
 		this.y = y;
 	}
-
 
 	public void goUp() {
 		setY(getY()-board.step);
@@ -98,14 +86,15 @@ public class Item implements Drawable {
 		setX(getX()-board.step);
 	}
 	public void draw(Graphics g) {
-//		if(shouldDrawn) {
+
 			ImageIcon image = new ImageIcon(getIconPath());
 			g.drawImage(image.getImage(), getX(), getY(), null);	
-//		}
 		
 	}
 	public void consume() {
 		setAlive(false);
+		setX(0);setY(0);
 	}
+	public abstract void doAction();
 	
 }

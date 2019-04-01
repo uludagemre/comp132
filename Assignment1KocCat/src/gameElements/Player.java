@@ -29,7 +29,6 @@ public class Player {
 		this.score = score;
 		setAlive(alive);
 		setIconPath(iconPath);
-		System.out.println("I am here");
 	}
 	public String getIconPath() {
 		return iconPath;
@@ -83,8 +82,8 @@ public class Player {
 			}
 			
 		}
-		System.out.println("This is your score: "+getScore());
-
+//		System.out.println("This is your score: "+getScore());
+		
 	}
 	public void setBoard(GameBoard board) {
 		this.board = board;
