@@ -57,26 +57,26 @@ public class Player {
 
 	public void move(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-			setIconPath("/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_left.png");
+			setIconPath("image_left.png");
 			if(getX()>210) {
 				goLeft();
 			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-			setIconPath("/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_down.png");
+			setIconPath("image_down.png");
 			if(getY()<500) {
 				goDown();
 			}
 		}	
 		if(e.getKeyCode() == KeyEvent.VK_UP) {
-			setIconPath("/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_up.png");
+			setIconPath("image_up.png");
 			if(getY()>0) {
 				goUp();
 
 			}
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			setIconPath("/Users/euludag14/Desktop/comp132/Assignment1KocCat/image_right.png");
+			setIconPath("image_right.png");
 			if(getX()<700) {
 				goRight();
 			}
