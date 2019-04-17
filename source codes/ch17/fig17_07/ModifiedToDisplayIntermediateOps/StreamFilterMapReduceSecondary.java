@@ -2,7 +2,7 @@
 // Triple the even ints from 2 through 10 then sum them with IntStream.
 import java.util.stream.IntStream;
 
-public class StreamFilterMapReduce {
+public class StreamFilterMapReduceSecondary {
    public static void main(String[] args) {
       // sum the triples of the even integers from 2 through 10
       System.out.printf(
