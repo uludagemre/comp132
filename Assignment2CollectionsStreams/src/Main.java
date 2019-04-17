@@ -18,23 +18,23 @@ public class Main {
 		try(Scanner scan = new Scanner(Paths.get("movies_sample.txt"))){
 			List<Actor> list = null;
 			Movie movie = null;			
-			
+
 			readFile(scan, list, movie, movieActorPairs);
 			askForFirstQuestion(movieActorPairs);
-//			askForSecondQuestion(movieActorPairs);
-//			
-//			askForFourthQuestion(movieActorPairs);
-//			
-			
-			
-//			Iterator it = movieActorPairs.keySet().iterator();
-//			Movie tempMovie;
-//			while(it.hasNext()) {
-//					tempMovie = (Movie) it.next();
-//					System.out.println(tempMovie);
-//					System.out.println("Kevin Bacon is in one of the movies: "+movieActorPairs.get(tempMovie).contains(actor1));
-//			}
-			
+			askForSecondQuestion(movieActorPairs);			
+			askforThirdQuestion(movieActorPairs);
+			askForFourthQuestion(movieActorPairs);
+			//			
+
+
+			//			Iterator it = movieActorPairs.keySet().iterator();
+			//			Movie tempMovie;
+			//			while(it.hasNext()) {
+			//					tempMovie = (Movie) it.next();
+			//					System.out.println(tempMovie);
+			//					System.out.println("Kevin Bacon is in one of the movies: "+movieActorPairs.get(tempMovie).contains(actor1));
+			//			}
+
 
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Array Index Exceeded");
@@ -52,27 +52,27 @@ public class Main {
 	}
 
 	public static void alternatePrint(Map<Movie,List<Actor>> movieActorPairs,String order,String character) {
-		 
+
 		if (order.equals("ascending")) {
 			movieActorPairs.keySet().stream().filter(m -> m.getName().startsWith(character)).sorted( Comparator.comparing(Movie::getName)).forEach((m) -> System.out.printf("%s %n",m.getName()));			
 		}else if(order.equals("descending")) {
 			movieActorPairs.keySet().stream().filter(m -> m.getName().startsWith(character)).sorted( Comparator.comparing(Movie::getName).reversed()).forEach((m) -> System.out.printf("%s %n",m.getName()));
 		}
 	}
-	
+
 	public static void askForFirstQuestion(Map <Movie, List<Actor>> movieActorPairs){
 		System.out.println("Enter the name and surname of the actor separated by comma (without a space):");
-	
+
 		Scanner userInput = new Scanner(System.in);
 		String input = userInput.nextLine();
 		String[] actors = input.split(",");
-		
+
 		String[] firstActorNames = actors[0].split(" ");
 		String[] secondActorNames = actors[1].split(" ");		
-				
+
 		Actor actor1 = new Actor(firstActorNames[0],firstActorNames[1]);
 		Actor actor2 = new Actor(secondActorNames[0],secondActorNames[1]);
-	
+
 		Iterator it = movieActorPairs.keySet().iterator();
 		ArrayList<Movie> actor1MovieList = new ArrayList<Movie>();
 		while(it.hasNext()){
@@ -102,22 +102,28 @@ public class Main {
 		}else{
 			System.out.println("They do not have elements in common!");			
 		}
-		
-		
+
+
 	}
-	
+
 	public static void askForSecondQuestion(Map <Movie, List<Actor>> movieActorPairs){
-		
+
 		System.out.println("Enter a letter to see the movies that starts with it in ascending or descending order Ex: E ascending ,K descending :");
 		Scanner scanOrder = new Scanner(System.in);
 		String character = scanOrder.next();
 		String order = scanOrder.next();
-		
+
 		alternatePrint(movieActorPairs, order,character);
 	}
-	
+
+	public static void askforThirdQuestion(Map <Movie, List<Actor>> movieActorPairs){
+		System.out.println("Search movies by first name, please enter the actor’s first name:");
+		Scanner scanName = new Scanner(System.in);
+		String name = scanName.next();
+	}
+
 	public static void askForFourthQuestion(Map <Movie, List<Actor>> movieActorPairs){
-		
+
 		System.out.println("Search movies by release date. Please enter the start year and end year of the period you want to search for separated by a space:");
 		Scanner scanYears = new Scanner(System.in);
 		String years = scanYears.nextLine();
@@ -127,11 +133,15 @@ public class Main {
 		Predicate<Movie> yearInterval = m -> (m.getReleaseYear() >= year1 && m.getReleaseYear() <= year2);
 		System.out.println("Movies released between "+year1+" - "+year2);
 		movieActorPairs.keySet().stream().filter(yearInterval).sorted(Comparator.comparing(Movie::getReleaseYear)).forEach((m) -> System.out.printf("%-40s %10d %n",m.getName(),m.getReleaseYear()));
-		
-		
+
+
 	}
+
+	public static void answerFifthQuestion(Map <Movie, List<Actor>> movieActorPairs){
 	
-	
+	}
+
+
 	public static void readFile(Scanner scan,List<Actor> list, Movie movie ,Map <Movie, List<Actor>> movieActorPairs){
 		String line = scan.nextLine();
 		while(scan.hasNext()) {
