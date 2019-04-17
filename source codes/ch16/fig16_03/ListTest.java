@@ -71,8 +71,8 @@ public class ListTest {
       System.out.printf("%nReversed List:%n");
 
       // print list in reverse order
-      while (iterator.hasPrevious()) {
-         System.out.printf("%s ", iterator.previous()); 
+      while(iterator.hasPrevious()){
+         System.out.printf("%s ",iterator.previous());
       }
    } 
 }
