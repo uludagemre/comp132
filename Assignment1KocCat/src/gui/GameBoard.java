@@ -22,9 +22,9 @@ public class GameBoard extends JPanel implements KeyListener{
 	public static final int baseY= 0;
 	public static final int step = 60;
 
-	private String ghost1Path =  "/Users/euludag14/Desktop/comp132/Assignment1KocCat/ghost1.png";
-	private String ghost2Path =  "/Users/euludag14/Desktop/comp132/Assignment1KocCat/ghost2.png";
-	private String ghost3Path =  "/Users/euludag14/Desktop/comp132/Assignment1KocCat/ghost3.png";
+	private String ghost1Path =  "ghost1.png";
+	private String ghost2Path =  "ghost2.png";
+	private String ghost3Path =  "ghost3.png";
 
 	private JFrame gameBoard = new JFrame("Koc Cat");
 	private Game game;
@@ -43,39 +43,36 @@ public class GameBoard extends JPanel implements KeyListener{
 
 	private int baseheight = 625;
 	private int basewidth = 1000;
-	private ImageIcon backgroundKocImage = new ImageIcon("/Users/euludag14/Desktop/comp132/Assignment1KocCat/kocUni.png");
+	private int fruitUntilWon;
+	private ImageIcon backgroundKocImage = new ImageIcon("kocUni.png");
 
-	//	Fruit fruit = new Fruit(baseX,baseY+3*step,true,null,1,this);
-	//	Fruit fruit =  new Fruit(265, 440, true, this);
 	public GameBoard(Game game) {
 
 		this.game = game;
 		this.player=game.getPlayer();
+		this.fruitUntilWon = game.getNumberOfFruits();
 		player.setBoard(this);
-
-		ghosts = new Ghost[game.getNumberOfGhost()];
-		fruits = new Fruit[game.getNumberOfFruits()];
-		poisons = new Poison[game.getNumberOfPoisons()];
-		
-		ghostThreads = new Thread[game.getNumberOfGhost()];//+game.getNumberOfFruits()+game.getNumberOfPoisons()
-		fruitThreads = new Thread[game.getNumberOfFruits()];
-		poisonThreads = new Thread[game.getNumberOfPoisons()];
-
-		createGhosts(ghosts, ghostThreads);
-		createFruits(fruits,fruitThreads);
-		createPoisons(poisons,poisonThreads);
 
 		this.setFocusable(true);
 		this.addKeyListener(this);
 		this.setLayout(null);
-		createLabels();
 		gameBoard.add(this);
-
 
 		gameBoard.setSize(basewidth, baseheight);
 		gameBoard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) ;
 		gameBoard.setVisible(true);
-
+		
+		ghosts = new Ghost[game.getNumberOfGhost()];
+		fruits = new Fruit[game.getNumberOfFruits()];
+		poisons = new Poison[game.getNumberOfPoisons()];
+		
+		ghostThreads = new Thread[game.getNumberOfGhost()];
+		fruitThreads = new Thread[game.getNumberOfFruits()];
+		poisonThreads = new Thread[game.getNumberOfPoisons()];
+		
+		createGhosts(ghosts, ghostThreads);
+		createFruits(fruits,fruitThreads);
+		createPoisons(poisons,poisonThreads);
 	}
 
 	public void paint(Graphics g) {
@@ -90,8 +87,12 @@ public class GameBoard extends JPanel implements KeyListener{
 		for (int i = 0; i < poisons.length; i++) {
 			poisons[i].draw(g);	
 		}
-
-
+	}
+	public int getFruitUntilWon() {
+		return fruitUntilWon;
+	}	
+	public void decreaseFruitUntilWon() {
+		this.fruitUntilWon = fruitUntilWon-1;
 	}
 	public Player getPlayer() {
 		return player;
@@ -107,15 +108,15 @@ public class GameBoard extends JPanel implements KeyListener{
 	@Override
 	public void keyReleased(KeyEvent e) {
 	}
-	private void createLabels() {
 
-	}
-	public void warnPlayer() {
-		JOptionPane.showMessageDialog(null, "You hit a ghost!");
-	}
 
-	public void congratsPlayer() {
-		JOptionPane.showMessageDialog(null, "You get a fruit!");
+	public void endGame() {
+		if(getFruitUntilWon() == 0) {
+			JOptionPane.showMessageDialog(null, "You won, Score: "+ player.getScore());
+		}else {
+			JOptionPane.showMessageDialog(null, "Game over, Score: "+((player.getScore() < 0) ? 0 : player.getScore()));
+		}
+		System.exit(0);
 	}
 
 	public void createGhosts(Ghost[] ghosts,Thread[] threads ) {
@@ -123,13 +124,13 @@ public class GameBoard extends JPanel implements KeyListener{
 		for (int i = 0; i < ghosts.length; i++) {
 			switch (i%3) {
 			case 0:
-				ghosts[i] = new Ghost (GameBoard.baseX+rand.nextInt(9)*step,GameBoard.baseY+rand.nextInt(9)*step,true,ghost1Path,this);
+				ghosts[i] = new Ghost (GameBoard.baseX+(rand.nextInt(8)+1)*step,GameBoard.baseY+(rand.nextInt(8)+1)*step,true,ghost1Path,this);
 				break;
 			case 1:
-				ghosts[i] = new Ghost (GameBoard.baseX+rand.nextInt(9)*step,GameBoard.baseY+rand.nextInt(9)*step,true,ghost2Path,this);
+				ghosts[i] = new Ghost (GameBoard.baseX+(rand.nextInt(8)+1)*step,GameBoard.baseY+(rand.nextInt(8)+1)*step,true,ghost2Path,this);
 				break;
 			case 2:
-				ghosts[i] = new Ghost (GameBoard.baseX+rand.nextInt(9)*step,GameBoard.baseY+rand.nextInt(9)*step,true,ghost3Path,this);
+				ghosts[i] = new Ghost (GameBoard.baseX+(rand.nextInt(8)+1)*step,GameBoard.baseY+(rand.nextInt(8)+1)*step,true,ghost3Path,this);
 				break;
 			}
 			threads[i] = new Thread(ghosts[i]);
@@ -146,7 +147,7 @@ public class GameBoard extends JPanel implements KeyListener{
 	}
 	public void createPoisons(Poison[] poisons,Thread[] threads ) {
 
-		for (int i = 0; i < fruits.length; i++) {
+		for (int i = 0; i < poisons.length; i++) {
 			poisons[i] = new Poison(GameBoard.baseX+rand.nextInt(9)*step,GameBoard.baseY+rand.nextInt(9)*step,true,null,1, this);
 			threads[i] = new Thread(poisons[i]);
 			threads[i].start();
