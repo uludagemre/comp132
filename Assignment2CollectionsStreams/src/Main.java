@@ -20,21 +20,11 @@ public class Main {
 			Movie movie = null;			
 
 			readFile(scan, list, movie, movieActorPairs);
-			askForFirstQuestion(movieActorPairs);
-			askForSecondQuestion(movieActorPairs);			
-			askforThirdQuestion(movieActorPairs);
-			askForFourthQuestion(movieActorPairs);
-			//			
-
-
-			//			Iterator it = movieActorPairs.keySet().iterator();
-			//			Movie tempMovie;
-			//			while(it.hasNext()) {
-			//					tempMovie = (Movie) it.next();
-			//					System.out.println(tempMovie);
-			//					System.out.println("Kevin Bacon is in one of the movies: "+movieActorPairs.get(tempMovie).contains(actor1));
-			//			}
-
+			//			askForFirstQuestion(movieActorPairs);
+			//			askForSecondQuestion(movieActorPairs);			
+						askforThirdQuestion(movieActorPairs);
+			//			askForFourthQuestion(movieActorPairs);
+//						answerFifthQuestion(movieActorPairs);
 
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Array Index Exceeded");
@@ -117,9 +107,39 @@ public class Main {
 	}
 
 	public static void askforThirdQuestion(Map <Movie, List<Actor>> movieActorPairs){
-		System.out.println("Search movies by first name, please enter the actor’s first name:");
+		System.out.println("Search movies by first name, please enter the actor's first name:");
 		Scanner scanName = new Scanner(System.in);
 		String name = scanName.next();
+		Map <String,List<Movie>> actorMovieMap = new HashMap<String, List<Movie>>();
+
+		System.out.println("Movies played by actors with first name \""+name+"\".");
+		System.out.println("Actor's name/Surname				Movie(s) Title(s)");
+		System.out.println("--------------------				-----------------");
+		Iterator it = movieActorPairs.keySet().iterator();
+		while(it.hasNext()) {
+			Movie movie = (Movie) it.next();
+			List<Actor> tempList = movieActorPairs.get(movie);
+			for (Actor actor : tempList) {
+				if(name.equals(actor.getName())) {
+					List<Movie> tempMovieList = null;
+					String fullName = actor.getName()+" "+actor.getSurName();
+					if(actorMovieMap.get(fullName) == null) {
+						tempMovieList = new ArrayList<Movie>();
+					}else {
+						tempMovieList = actorMovieMap.get(fullName);
+					}
+					tempMovieList.add(movie);
+					actorMovieMap.put(fullName, tempMovieList);
+				}
+			}
+		}
+		for (String actor : actorMovieMap.keySet()) {
+			System.out.printf("%-50s",actor);
+			for (Movie movie : actorMovieMap.get(actor)) {
+				System.out.printf("%s (%d) ",movie,movie.getReleaseYear());
+			}
+			System.out.println();
+		}
 	}
 
 	public static void askForFourthQuestion(Map <Movie, List<Actor>> movieActorPairs){
@@ -138,7 +158,33 @@ public class Main {
 	}
 
 	public static void answerFifthQuestion(Map <Movie, List<Actor>> movieActorPairs){
-	
+
+		Map <String,List<Movie>> actorMovieMap = new HashMap<String, List<Movie>>();
+		Iterator it = movieActorPairs.keySet().iterator();
+		while(it.hasNext()) {
+			Movie movie = (Movie) it.next();
+			List<Actor> tempList = movieActorPairs.get(movie);
+			for (Actor actor : tempList) {
+
+				List<Movie> tempMovieList = null;
+				String fullName = actor.getName()+" "+actor.getSurName();
+				if(actorMovieMap.get(fullName) == null) {
+					tempMovieList = new ArrayList<Movie>();
+				}else {
+					tempMovieList = actorMovieMap.get(fullName);
+				}
+				tempMovieList.add(movie);
+				actorMovieMap.put(fullName, tempMovieList);
+
+			}
+		}
+		for (String actor : actorMovieMap.keySet()) {
+			System.out.printf("%-50s",actor);
+			for (Movie movie : actorMovieMap.get(actor)) {
+				System.out.printf("%s (%d) ",movie,movie.getReleaseYear());
+			}
+			System.out.println();
+		}
 	}
 
 
