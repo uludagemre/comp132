@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include<stdlib.h> 
 #include <stdbool.h>
+#include <string.h>
 
 struct Grade{
     char examName[20];
@@ -15,34 +16,132 @@ struct Student{
     int numberOfExamsGraded;
     struct Student *next;
 };
-typedef struct student Student;
-typedef Student *StudentPtr;
 
 
 //Prototypes
-void addStudentSorted(Student** headPtr, int id, char name[], char surname[]);
-Student* removeStudent(Student** headPtr, int id);
-void addGrade(Student* head, int id, char exam[], int takenPoint);
-void printCourseReportForAllStudents(Student* head);
-double calculateClassAvarageForOneExam (Student* head, char examName[]);
-bool isStudentInList(Student * head, int id);
-void calculateLetterGradesOfAllStudents (Student * head);
+// void addStudentSorted(Student** headPtr, int id, char name[], char surname[]);
+// Student* removeStudent(Student** headPtr, int id);
+// void addGrade(Student* head, int id, char exam[], int takenPoint);
+// void printCourseReportForAllStudents(Student* head);
+// double calculateClassAvarageForOneExam (Student* head, char examName[]);
+// bool isStudentInList(Student * head, int id);
+// void calculateLetterGradesOfAllStudents (Student * head);
 
 //Helper functions
-Student* findStudentById(Student* head, int id);
-bool isListEmpty(Student **headPtr);
+// Student* findStudentById(Student* head, int id);
+// bool isListEmpty(struct Student **headPtr);
+
+
+
+bool isListEmpty(struct Student **headPtr){
+    struct Student *current = *headPtr;
+    if(current ->next -> id == 0) return true;
+    else return false;
+}
+void addStudentSorted(struct Student **headPtr, int id, char name[], char surname[]){
+    struct Student *currentIter = *headPtr;
+    if(currentIter ->next ->id == 0){ //if the list is empty condition!
+        struct Student *tail = currentIter -> next ;
+        struct Student *nodeToPut = (struct Student*)malloc(sizeof(struct Student));
+        currentIter -> next = nodeToPut;
+        nodeToPut -> next = tail;
+        nodeToPut ->id=id;
+        strcpy(nodeToPut->name,name);
+        strcpy(nodeToPut->surname,surname); 
+    }
+     else{ //if the list is not empty!
+        struct Student *nodeToPut = (struct Student*)malloc(sizeof(struct Student));   
+        while(id> currentIter->next->id && currentIter->next->next != NULL){ //in the first place currentIter was header student node
+            currentIter = currentIter ->next;  //according to my code's logic currentIter never becomes tail node!
+        }
+        nodeToPut->id = id;
+        strcpy(nodeToPut->name,name);
+        strcpy(nodeToPut->surname,surname);
+        nodeToPut->next=currentIter->next;
+        currentIter->next =nodeToPut;
+    }    
+    
+}
+struct Student* removeStudent(struct Student **headPtr, int id){
+    struct Student *currentIter = *headPtr;
+    if(currentIter ->next ->id == 0){ //if the list is empty condition!
+        return NULL;
+    }
+     else{ //if the list is not empty!
+        while(id > currentIter->next->id && currentIter->next->next != NULL){ //in the first place currentIter was header student node
+            currentIter = currentIter ->next;//according to my code's logic currentIter never becomes tail node!
+            if(id == currentIter->next->id) {
+                struct Student *previousNode = currentIter;
+                struct Student *nodeToBeDeleted = currentIter->next;
+                struct Student *nextNode = nodeToBeDeleted->next;
+                previousNode->next=nextNode;
+                return nodeToBeDeleted;
+            }
+        }
+        return NULL;
+    }    
+    
+}
+
+struct Student* findStudentById(struct Student* head, int id){
+    struct Student* currentIter = head;
+    if(isListEmpty(&head)){ //if the list is empty condition!
+        return NULL;
+    }else{
+        while(id > currentIter->next->id && currentIter->next->next != NULL){ //in the first place currentIter was header student node
+            currentIter = currentIter ->next;//according to my code's logic currentIter never becomes tail node!
+            if(id == currentIter->next->id) {
+                return currentIter->next;
+            }
+        }
+        return NULL;   
+    }
+ }
+
+
+bool isStudentInList(struct Student * head, int id){
+    struct Student* tempStudent = findStudentById(head,id);
+    if (tempStudent == NULL) return false;
+    else return true;
+}
+
+void printStudent(struct Student* student) {
+
+       printf("%s %s\t id:%d\t", student->name, student->surname, student->id);
+       printf("Graded exams: ");
+       for (int i = 0; i <5; i++) {
+            printf("%s :%d\t", student->grades[i].examName, student->grades[i].points);
+        }
+       printf("\nLetter : %c\n", student->letterGrade); }
+
+
 
 int main(void){
+    // initialize empty linkedlist
     struct Student* head = (struct Student*)malloc(sizeof(struct Student));
     struct Student* tail = (struct Student*)malloc(sizeof(struct Student));
-    head ->next=tail;
-    tail ->next=NULL;
-    
-    
-
-
-
+    head->next=tail;
     // initialize empty linkedlist
+
+    addStudentSorted(&head,50209,"emre","uludağ");     
+    addStudentSorted(&head,53781,"aylin","akseki");
+    addStudentSorted(&head,60350,"haşmettin","kıllibacak");     
+
+    // removeStudent(&head,60350);
+    struct Student* myStudent= findStudentById(head,60350);
+    printStudent(myStudent);
+    // if(myStudent ==NULL){
+    //     printf("Cannot find the student with given id!\n");
+    // }else{
+    //     printf("This is student name: %s\n",myStudent->name);
+    // }
+    
+    if(isListEmpty(&head)){
+    printf("The list is empty\n");
+    }else{
+    printf("The list is not empty\n");
+    }
+   
     
     // int option;
     // printf("Option 1 – Enter 1 in order to add a new student then press Enter\n");
@@ -60,36 +159,5 @@ return 0;
 }
 
 
-void addStudentSorted(Student** headPtr, int id, char name[], char surname[]){
 
-}
-Student *remove_node(Student **headPtr, int id) {
-// To be filled in class
-    Student *current = *headPtr;
-    Student *prev = NULL;
-    while(current != NULL ) {
-        if (current -> id == id) {
-            if (prev == NULL) { // special case, delete first node
-                *headPtr = current->next;
-                return *headPtr; 
-            }
-            prev->next = current->next;
-            return current;
-        }
-        prev = current;
-        current = current->next;
-    }
-    return NULL; // not found
-}
 
-bool isListEmpty(Student **headPtr){
-     if (*headPtr == NULL) return true;
-     else false;
-}
-// Student *create_student(int data) {
-//     Student *St;
-//     node = (Node *) malloc(sizeof(Node));
-//     node->data = data;
-//     node->next = NULL;
-//     return node;
-// }
