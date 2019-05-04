@@ -31,6 +31,7 @@ double calculateClassAvarageForOneExam (struct Student* head, char examName[]);
 bool isStudentInList(struct Student * head, int id);
 void calculateLetterGradesOfAllStudents (struct Student * head);
 char decideLetterGrade(double average);
+void printStudent(struct Student* student);
 
 // Helper functions
 struct Student* findStudentById(struct Student* head, int id);
@@ -41,30 +42,10 @@ int main(void){
     struct Student* head = (struct Student*)malloc(sizeof(struct Student));
     struct Student* tail = (struct Student*)malloc(sizeof(struct Student));
     head->next=tail;
-    // initialize empty linkedlist
-
-    // addStudentSorted(&head,50209,"emre","uludağ");     
-    // addStudentSorted(&head,53781,"aylin","akseki");
-    // addStudentSorted(&head,60350,"haşmettin","kıllibacak");     
-    // addGrade(head,60350,"quiz1",60);
-    // addGrade(head,60350,"quiz2",80);
-    // addGrade(head,50209,"quiz1",80);
-    // addGrade(head,53781,"quiz2",50);
-    // addGrade(head,60350,"quiz3",60);
-    // addGrade(head,60350,"quiz4",80);
-    // addGrade(head,50209,"quiz2",80);
-    // addGrade(head,53781,"quiz1",50);
-    // addGrade(head,60350,"quiz5",100);
-    // calculateLetterGradesForAllStudents(head);
-    // // removeStudent(&head,60350);
-    // struct Student* myStudent= findStudentById(head,50209);
-    // printCourseReportForEveryStudent(head);
-
-    // double average = calculateClassAvarageForOneExam(head,"quiz2");
-    // printf("The average in science is %2.1f\n",average);
 
     
     int option;
+    printf("\n==========================================================================================\n");
     printf("Option 1 – Enter 1 in order to add a new student then press Enter\n");
     printf("Option 2 – Enter 2 in order to check if a student is in the course list\n"); 
     printf("Option 3 – Enter 3 in order to delete a student in the course then press Enter\n");
@@ -73,8 +54,10 @@ int main(void){
     printf("Option 6 – Enter 6 in order to print the course report for one student then press Enter\n");
     printf("Option 7 – Enter 7 in order to print the course report for all students then press Enter\n");
     printf("Option 8 – Enter 8 in order to exit then press Enter\n");
+    printf("==========================================================================================\n");
     printf("Choose one option: \n");
     scanf("%d",&option);
+
     while(option != 8){
         if(option == 1){
             char name[20];
@@ -85,52 +68,69 @@ int main(void){
             addStudentSorted(&head,id,name,surname);     
         }
         else if(option == 2){
-            char name[20];
-            char surname[20];
             int id;
             printf("You have chosen the option 2. Enter the student ID to check if he/she is in the list then press Enter:\n");
             scanf("%d",&id);
-            if(isStudentInList(&head,id)){
+            if(isStudentInList(head,id)){
                 printf("The student with given id is in the student list.\n");
             }else{
                 printf("The student with given id is not in the student list.\n");
             }
         }
         else if(option == 3){
-            char name[20];
-            char surname[20];
             int id;
             printf("You have chosen the option 3. Enter the student ID to delete him/her then press Enter:\n");
             scanf("%d",&id);
-            struct Student* student = removeStudent(&head,id);   
-            
+            struct Student* myStudent = removeStudent(&head,id);
+            if(myStudent == NULL){
+                printf("No student with given Student ID!\n");
+            }else{
+                printf("The following student is deleted:\n");
+                printStudent(myStudent);
+            }
         }
         else if(option == 4){
-            
+            int id;
+            char quizName[10];
+            int takenPoints;
+            printf("You have chosen the option 4. Enter the student ID, quiz name and points received seperated by one space to add or change the grade then press Enter:\n");
+            scanf("%d %s %d",&id,quizName,&takenPoints);
+            addGrade(head,id,quizName,takenPoints);
         }
         else if(option == 5){
-            
+            char quizName[10];
+            printf("You have chosen the option 5. Enter the quiz name to get the average then press Enter:\n");
+            scanf("%s",quizName);
+            double average = calculateClassAvarageForOneExam(head,quizName);
+            if(average == 0) printf("Either no average data is found or average");
+            printf("The average for %s is %3.1f\n",quizName,average);   
         }
         else if(option == 6){
-            
+            int studentID;
+            printf("You have chosen the option 6. Enter the student id to get the grade report then press Enter:\n");
+            scanf("%d",&studentID);
+            struct Student* tempStudent = findStudentById(head,studentID);
+            calculateLetterGradesOfAllStudents(head);
+            printStudent(tempStudent);
         }
         else if(option == 7){
-            
+            printf("You have chosen the option 7. A detailed report including letter grades will be provided below:\n");
+            calculateLetterGradesOfAllStudents(head);
+            printCourseReportForAllStudents(head);
         }
         else if(option == 8){
-            
-        }else{
-            printf("Invalid choice!");
+            printf("Bye bye!\n");
             break;
+        }else{
+            printf("Invalid choice!\n");
+            printf("Choose one option: \n");
+            scanf("%d",&option);        
         }
-        
+    calculateLetterGradesOfAllStudents(head);
     printf("Choose one option: \n");
     scanf("%d",&option);
     }
     
-    
-    printf("Bye bye !\n");
-
 
 return 0;
 }
@@ -225,14 +225,14 @@ void addGrade(struct Student* head, int id, char exam[], int takenPoint){
     for (int i = 0; i < 5; ++i)
     {
         
-        if(tempStudent->grades[i].points==0){
+        if(tempStudent->grades[i].points==0 || strcmp(tempStudent->grades[i].examName,exam)==0){
             tempStudent->grades[i]=*tempGrade;
             break;
         }
     }
 
 }
-void printCourseReportForEveryStudent(struct Student* head){
+void printCourseReportForAllStudents(struct Student* head){
     struct Student* current = head;
     if(isListEmpty(&head)){ //if the list is empty condition!
         return;
@@ -265,8 +265,12 @@ double calculateClassAvarageForOneExam (struct Student* head, char examName[]){
             current = current ->next;//according to my code's logic!   
 
         }
-        return pointSum/studentCount;
+        if(studentCount != 0){
+            return pointSum/studentCount;
+        }else{
+            return 0;
         }
+     }
 }
 char decideLetterGrade(double average){
     char letter;
